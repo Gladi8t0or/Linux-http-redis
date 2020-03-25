@@ -1,0 +1,380 @@
+anatoliy@anatoliy-VirtualBox:~/Рабочий стол$ redis-cli
+
+Command 'redis-cli' not found, but can be installed with:
+
+sudo apt install redis-tools
+
+anatoliy@anatoliy-VirtualBox:~/Рабочий стол$ sudo apt install redis-tools
+[sudo] пароль для anatoliy: 
+Чтение списков пакетов… Готово
+Построение дерева зависимостей       
+Чтение информации о состоянии… Готово
+Будут установлены следующие дополнительные пакеты:
+  libjemalloc1
+Предлагаемые пакеты:
+  ruby-redis
+Следующие НОВЫЕ пакеты будут установлены:
+  libjemalloc1 redis-tools
+Обновлено 0 пакетов, установлено 2 новых пакетов, для удаления отмечено 0 пакетов, и 97 пакетов не обновлено.
+Необходимо скачать 598 kB архивов.
+После данной операции объём занятого дискового пространства возрастёт на 2 840 kB.
+Хотите продолжить? [Д/н] y
+Пол:1 http://ru.archive.ubuntu.com/ubuntu bionic/universe amd64 libjemalloc1 amd64 3.6.0-11 [82,4 kB]
+Пол:2 http://ru.archive.ubuntu.com/ubuntu bionic-updates/universe amd64 redis-tools amd64 5:4.0.9-1ubuntu0.2 [516 kB]
+Получено 598 kB за 2с (251 kB/s)     
+Выбор ранее не выбранного пакета libjemalloc1.
+(Чтение базы данных … на данный момент установлено 135854 файла и каталога.)
+Подготовка к распаковке …/libjemalloc1_3.6.0-11_amd64.deb …
+Распаковывается libjemalloc1 (3.6.0-11) …
+Выбор ранее не выбранного пакета redis-tools.
+Подготовка к распаковке …/redis-tools_5%3a4.0.9-1ubuntu0.2_amd64.deb …
+Распаковывается redis-tools (5:4.0.9-1ubuntu0.2) …
+Настраивается пакет libjemalloc1 (3.6.0-11) …
+Настраивается пакет redis-tools (5:4.0.9-1ubuntu0.2) …
+Обрабатываются триггеры для man-db (2.8.3-2ubuntu0.1) …
+Обрабатываются триггеры для libc-bin (2.27-3ubuntu1) …
+anatoliy@anatoliy-VirtualBox:~/Рабочий стол$ redis-cli
+Could not connect to Redis at 127.0.0.1:6379: Connection refused
+Could not connect to Redis at 127.0.0.1:6379: Connection refused
+not connected> 
+anatoliy@anatoliy-VirtualBox:~/Рабочий стол$ sudo apt install redis-server
+Чтение списков пакетов… Готово
+Построение дерева зависимостей       
+Чтение информации о состоянии… Готово
+Следующие НОВЫЕ пакеты будут установлены:
+  redis-server
+Обновлено 0 пакетов, установлено 1 новых пакетов, для удаления отмечено 0 пакетов, и 97 пакетов не обновлено.
+Необходимо скачать 35,4 kB архивов.
+После данной операции объём занятого дискового пространства возрастёт на 172 kB.
+Пол:1 http://ru.archive.ubuntu.com/ubuntu bionic-updates/universe amd64 redis-server amd64 5:4.0.9-1ubuntu0.2 [35,4 kB]
+Получено 35,4 kB за 0с (174 kB/s) 
+Выбор ранее не выбранного пакета redis-server.
+(Чтение базы данных … на данный момент установлено 135879 файлов и каталогов.)
+Подготовка к распаковке …/redis-server_5%3a4.0.9-1ubuntu0.2_amd64.deb …
+Распаковывается redis-server (5:4.0.9-1ubuntu0.2) …
+Настраивается пакет redis-server (5:4.0.9-1ubuntu0.2) …
+Created symlink /etc/systemd/system/redis.service → /lib/systemd/system/redis-server.service.
+Created symlink /etc/systemd/system/multi-user.target.wants/redis-server.service → /lib/systemd/system/redis-server.service.
+Обрабатываются триггеры для systemd (237-3ubuntu10.33) …
+Обрабатываются триггеры для man-db (2.8.3-2ubuntu0.1) …
+Обрабатываются триггеры для ureadahead (0.100.0-21) …
+anatoliy@anatoliy-VirtualBox:~/Рабочий стол$ sudo nano /etc/redis/redis.conf
+Используйте «fg» для возврата в nano
+
+[1]+  Остановлен    sudo nano /etc/redis/redis.conf
+anatoliy@anatoliy-VirtualBox:~/Рабочий стол$ sudo nano /etc/redis/redis.conf
+Используйте «fg» для возврата в nano
+
+[2]+  Остановлен    sudo nano /etc/redis/redis.conf
+anatoliy@anatoliy-VirtualBox:~/Рабочий стол$ sudo systemctl restart redis.service
+anatoliy@anatoliy-VirtualBox:~/Рабочий стол$ sudo systemctl status redis
+● redis-server.service - Advanced key-value store
+   Loaded: loaded (/lib/systemd/system/redis-server.service; enabled; vendor pr
+   Active: active (running) since Wed 2020-03-25 19:58:46 MSK; 12s ago
+     Docs: http://redis.io/documentation,
+           man:redis-server(1)
+  Process: 6407 ExecStop=/bin/kill -s TERM $MAINPID (code=exited, status=0/SUCC
+  Process: 6410 ExecStart=/usr/bin/redis-server /etc/redis/redis.conf (code=exi
+ Main PID: 6411 (redis-server)
+    Tasks: 4 (limit: 1752)
+   CGroup: /system.slice/redis-server.service
+           └─6411 /usr/bin/redis-server 127.0.0.1:6379
+
+мар 25 19:58:46 anatoliy-VirtualBox systemd[1]: Starting Advanced key-value sto
+мар 25 19:58:46 anatoliy-VirtualBox systemd[1]: Started Advanced key-value stor
+ ESCOD
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+● redis-server.service - Advanced key-value store
+   Loaded: loaded (/lib/systemd/system/redis-server.service; enabled; vendor pr
+   Active: active (running) since Wed 2020-03-25 19:58:46 MSK; 12s ago
+     Docs: http://redis.io/documentation,
+           man:redis-server(1)
+  Process: 6407 ExecStop=/bin/kill -s TERM $MAINPID (code=exited, status=0/SUCC
+  Process: 6410 ExecStart=/usr/bin/redis-server /etc/redis/redis.conf (code=exi
+ Main PID: 6411 (redis-server)
+    Tasks: 4 (limit: 1752)
+   CGroup: /system.slice/redis-server.service
+           └─6411 /usr/bin/redis-server 127.0.0.1:6379
+
+мар 25 19:58:46 anatoliy-VirtualBox systemd[1]: Starting Advanced key-value sto
+мар 25 19:58:46 anatoliy-VirtualBox systemd[1]: Started Advanced key-value stor
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+ ESCOC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+alue store
+redis-server.service; enabled; vendor preset: enabled)
+020-03-25 19:58:46 MSK; 12s ago
+n,
+
+ERM $MAINPID (code=exited, status=0/SUCCESS)
+s-server /etc/redis/redis.conf (code=exited, status=0/SUCCESS)
+
+
+ervice
+ 127.0.0.1:6379
+
+temd[1]: Starting Advanced key-value store...
+temd[1]: Started Advanced key-value store.
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+ ESCOD
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+● redis-server.service - Advanced key-value store
+   Loaded: loaded (/lib/systemd/system/redis-server.service; enabled; vendor pr
+   Active: active (running) since Wed 2020-03-25 19:58:46 MSK; 12s ago
+     Docs: http://redis.io/documentation,
+           man:redis-server(1)
+  Process: 6407 ExecStop=/bin/kill -s TERM $MAINPID (code=exited, status=0/SUCC
+  Process: 6410 ExecStart=/usr/bin/redis-server /etc/redis/redis.conf (code=exi
+ Main PID: 6411 (redis-server)
+    Tasks: 4 (limit: 1752)
+   CGroup: /system.slice/redis-server.service
+           └─6411 /usr/bin/redis-server 127.0.0.1:6379
+
+мар 25 19:58:46 anatoliy-VirtualBox systemd[1]: Starting Advanced key-value sto
+мар 25 19:58:46 anatoliy-VirtualBox systemd[1]: Started Advanced key-value stor
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+ ESCOC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+alue store
+redis-server.service; enabled; vendor preset: enabled)
+020-03-25 19:58:46 MSK; 12s ago
+n,
+
+ERM $MAINPID (code=exited, status=0/SUCCESS)
+s-server /etc/redis/redis.conf (code=exited, status=0/SUCCESS)
+
+
+ervice
+ 127.0.0.1:6379
+
+temd[1]: Starting Advanced key-value store...
+temd[1]: Started Advanced key-value store.
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+ ESCOD
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+● redis-server.service - Advanced key-value store
+   Loaded: loaded (/lib/systemd/system/redis-server.service; enabled; vendor pr
+   Active: active (running) since Wed 2020-03-25 19:58:46 MSK; 12s ago
+     Docs: http://redis.io/documentation,
+           man:redis-server(1)
+  Process: 6407 ExecStop=/bin/kill -s TERM $MAINPID (code=exited, status=0/SUCC
+  Process: 6410 ExecStart=/usr/bin/redis-server /etc/redis/redis.conf (code=exi
+ Main PID: 6411 (redis-server)
+    Tasks: 4 (limit: 1752)
+   CGroup: /system.slice/redis-server.service
+           └─6411 /usr/bin/redis-server 127.0.0.1:6379
+
+мар 25 19:58:46 anatoliy-VirtualBox systemd[1]: Starting Advanced key-value sto
+мар 25 19:58:46 anatoliy-VirtualBox systemd[1]: Started Advanced key-value stor
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+
+[3]+  Остановлен    sudo systemctl status redis
+anatoliy@anatoliy-VirtualBox:~/Рабочий стол$ redis-cli
+127.0.0.1:6379> ping
+PONG
+127.0.0.1:6379> set test "Hello World"
+OK
+127.0.0.1:6379> get test
+"Hello World"
+127.0.0.1:6379> exit
+anatoliy@anatoliy-VirtualBox:~/Рабочий стол$ sudo systemctl restart redis
+anatoliy@anatoliy-VirtualBox:~/Рабочий стол$ redis-cli
+127.0.0.1:6379> get test
+"Hello World"
+127.0.0.1:6379> 
+

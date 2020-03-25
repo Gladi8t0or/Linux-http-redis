@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <curl/curl.h>
+//главная функция
+int main(void)
+{
+  //уже знакомый объект CURL
+  CURL* curl;
+  //объект - результат вызова функции curl_easy_perform
+  CURLcode res;
+  //выполняем инициализацю
+  curl = curl_easy_init();
+  if(curl) { //проверяем
+  //задаем опцию - получить страницу по адресу https://httpbin.org
+    curl_easy_setopt(curl, CURLOPT_URL, "https://httpbin.org/#/");
+   
+	curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
+    //вызываем функцию, выполняющюю все операции, заданные в опциях (получение страницы, передача данных и т.д.), результат - объект типа CURLcode
+    res = curl_easy_perform(curl);
+
+	if(res != CURLE_OK)
+		fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(res));
+    //выполняем обязательное завершение сессии   
+    curl_easy_cleanup(curl);
+  }
+  return 0;
+}
